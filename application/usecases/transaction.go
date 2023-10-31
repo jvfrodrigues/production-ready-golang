@@ -22,7 +22,7 @@ func (tx TransactionUseCase) Register(request dtos.TransactionInputDto) (*entiti
 	}
 	fmt.Printf("%+v", transaction)
 	err = tx.TransactionRepository.Register(transaction)
-	if transaction.ID == "" {
+	if err != nil {
 		return nil, err
 	}
 	return transaction, nil
