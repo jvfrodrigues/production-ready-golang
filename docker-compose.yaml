@@ -7,6 +7,8 @@ services:
       - .env
     volumes:
       - .:/go/src/
+    ports:
+      - "8080:8080"
 
   db:
     image: postgres:9.4

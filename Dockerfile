@@ -7,6 +7,6 @@ ENV CGO_ENABLED=1
 
 RUN apt-get update && \
     apt-get install build-essential -y && \
-    go install github.com/spf13/cobra-cli@v1.3.0 &&
+    go install github.com/spf13/cobra-cli@v1.3.0
 
 CMD ["tail", "-f", "/dev/null"]
