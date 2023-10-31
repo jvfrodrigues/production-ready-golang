@@ -8,6 +8,7 @@ import (
 
 	"github.com/jinzhu/gorm"
 	"github.com/joho/godotenv"
+	"github.com/jvfrodrigues/transaction-product-wex/domain/entities"
 	_ "github.com/lib/pq"
 	_ "gorm.io/driver/sqlite"
 )
@@ -45,9 +46,9 @@ func ConnectDB(env string) *gorm.DB {
 		db.LogMode(true)
 	}
 
-	// if os.Getenv("AutoMigrateDb") == "true" {
-	// 	db.AutoMigrate()
-	// }
+	if os.Getenv("AutoMigrateDb") == "true" {
+		db.AutoMigrate(&entities.Transaction{})
+	}
 
 	return db
 }
