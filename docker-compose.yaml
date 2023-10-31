@@ -1,0 +1,23 @@
+version: "3"
+
+services:
+  app:
+    build: .
+    env_file:
+      - .env
+    volumes:
+      - .:/go/src/
+
+  db:
+    image: postgres:9.4
+    restart: always
+    tty: true
+    env_file:
+      - .env
+    volumes:
+      - .pgdata:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_DB=${DB_USER}
+    ports:
+      - "5432:5432"
