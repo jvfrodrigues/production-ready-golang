@@ -12,26 +12,6 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
-func TestTransactionCreationWithCorrectInformation(t *testing.T) {
-	description := "Test description"
-	transactionDate := time.Now()
-	purchaseAmount := 10.55
-	transaction, err := entities.NewTransaction(description, transactionDate, purchaseAmount)
-
-	require.Nil(t, err)
-	require.NotEmpty(t, uuid.FromStringOrNil(transaction.ID))
-}
-
-func TestTransactionNotCreatedWithIncorrectInformation(t *testing.T) {
-	description := ""
-	transactionDate := time.Now()
-	purchaseAmount := 10.55
-	transaction, err := entities.NewTransaction(description, transactionDate, purchaseAmount)
-
-	require.Nil(t, transaction)
-	require.NotEmpty(t, err)
-}
-
 func TestTransactionCreation(t *testing.T) {
 	testCases := []struct {
 		testDescription string
