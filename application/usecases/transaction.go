@@ -45,11 +45,15 @@ func (tx TransactionUseCase) FindAndExchangeCurrency(id string, country string) 
 	if err != nil {
 		return nil, err
 	}
-	if len(exchange.Data) <= 0 {
+	treasuryExchange, ok := exchange.(dtos.TreasuryExchangeResponseDto)
+	if !ok {
+		return nil, errors.New("could not get exchange information")
+	}
+	if len(treasuryExchange.Data) <= 0 {
 		return nil, errors.New("no exchange information found for country in 6 month period")
 	}
 	originalAmount := new(big.Rat).SetFrac64(transaction.PurchaseAmount, 100)
-	parsedExchangeRate, err := strconv.ParseFloat(exchange.Data[0].ExchangeRate, 64)
+	parsedExchangeRate, err := strconv.ParseFloat(treasuryExchange.Data[0].ExchangeRate, 64)
 	if err != nil {
 		return nil, err
 	}
@@ -59,7 +63,7 @@ func (tx TransactionUseCase) FindAndExchangeCurrency(id string, country string) 
 		ID:              transaction.ID,
 		Description:     transaction.Description,
 		TransactionDate: transaction.TransactionDate,
-		ExchangeRate:    exchange.Data[0].ExchangeRate,
+		ExchangeRate:    treasuryExchange.Data[0].ExchangeRate,
 		OriginalAmount:  originalAmount.FloatString(2),
 		ConvertedAmount: convertedAmount.FloatString(2),
 	}
