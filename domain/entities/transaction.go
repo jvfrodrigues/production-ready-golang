@@ -19,15 +19,15 @@ type Transactions struct {
 
 type Transaction struct {
 	Base            `valid:"required"`
-	Description     string    `json:"description" gorm:"type:varchar(50)" valid:"-"`
+	Description     string    `json:"description" gorm:"type:varchar(50)" valid:"required~description is required,stringlength(0|50)~description has a 50 character limit"`
 	TransactionDate time.Time `json:"transaction_date" valid:"required"`
-	PurchaseAmount  int64     `json:"purchase_amount" gorm:"bigint" valid:"required"`
+	PurchaseAmount  int64     `json:"purchase_amount" gorm:"bigint" valid:"required,int"`
 }
 
 func (transaction *Transaction) isValid() error {
 	_, err := govalidator.ValidateStruct(transaction)
 	if transaction.PurchaseAmount <= 0 {
-		return errors.New("the amount must be greater than 0")
+		return errors.New("amount must be greater than 0")
 	}
 	if err != nil {
 		return err
