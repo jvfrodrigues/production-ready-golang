@@ -7,12 +7,20 @@ import (
 	"strconv"
 
 	"github.com/jvfrodrigues/transaction-product-wex/application/dtos"
-	"github.com/jvfrodrigues/transaction-product-wex/application/exchange"
+	"github.com/jvfrodrigues/transaction-product-wex/domain"
 	"github.com/jvfrodrigues/transaction-product-wex/domain/entities"
 )
 
 type TransactionUseCase struct {
 	TransactionRepository entities.TransactionRepository
+	ExchangeService       domain.ExchangeService
+}
+
+func NewTransactionUseCase(transactionRepository entities.TransactionRepository, exchangeService domain.ExchangeService) *TransactionUseCase {
+	return &TransactionUseCase{
+		TransactionRepository: transactionRepository,
+		ExchangeService:       exchangeService,
+	}
 }
 
 func (tx TransactionUseCase) Register(request dtos.TransactionInputDto) (*entities.Transaction, error) {
@@ -33,7 +41,7 @@ func (tx TransactionUseCase) FindAndExchangeCurrency(id string, country string) 
 	if err != nil {
 		return nil, err
 	}
-	exchange, err := exchange.GetCountryExchange(country, transaction.TransactionDate)
+	exchange, err := tx.ExchangeService.GetCountryExchange(country, transaction.TransactionDate)
 	if err != nil {
 		return nil, err
 	}
@@ -51,7 +59,7 @@ func (tx TransactionUseCase) FindAndExchangeCurrency(id string, country string) 
 		ID:              transaction.ID,
 		Description:     transaction.Description,
 		TransactionDate: transaction.TransactionDate,
-		ExchangeRate:    parsedExchangeRate,
+		ExchangeRate:    exchange.Data[0].ExchangeRate,
 		OriginalAmount:  originalAmount.FloatString(2),
 		ConvertedAmount: convertedAmount.FloatString(2),
 	}
