@@ -12,7 +12,7 @@ type TransactionExchangedOutputDto struct {
 	ID              string    `json:"id"`
 	Description     string    `json:"description"`
 	TransactionDate time.Time `json:"transaction_date"`
-	ExchangeRate    float64   `json:"exchange rate"`
+	ExchangeRate    string    `json:"exchange rate"`
 	OriginalAmount  string    `json:"original_amount"`
 	ConvertedAmount string    `json:"converted_amount"`
 }

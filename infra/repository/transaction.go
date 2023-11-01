@@ -9,6 +9,12 @@ type TransactionRepositoryDb struct {
 	Db *gorm.DB
 }
 
+func NewTrasactionRepositoryDb(db *gorm.DB) *TransactionRepositoryDb {
+	return &TransactionRepositoryDb{
+		Db: db,
+	}
+}
+
 func (r TransactionRepositoryDb) Register(transaction *entities.Transaction) error {
 	err := r.Db.Create(transaction).Error
 	if err != nil {
