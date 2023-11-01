@@ -40,7 +40,7 @@ func (txc *TransactionController) RegisterTransaction(ctx *gin.Context) {
 
 func (txc *TransactionController) FindTransactionAndExchangeCurrency(ctx *gin.Context) {
 	id := ctx.Param("id")
-	country := ctx.Param("country")
+	country := ctx.Query("country")
 	response, err := txc.TransactionUsecase.FindAndExchangeCurrency(id, country)
 	if err != nil {
 		ctx.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})

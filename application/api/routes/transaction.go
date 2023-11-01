@@ -15,6 +15,6 @@ func (r *Routes) setupTransactionRoutes() {
 	transactionGroup := r.Router.Group("/transaction")
 	{
 		transactionGroup.POST("/", transactionController.RegisterTransaction)
-		transactionGroup.GET("/exchange/:id/:country", transactionController.FindTransactionAndExchangeCurrency)
+		transactionGroup.GET("/exchange/:id", transactionController.FindTransactionAndExchangeCurrency)
 	}
 }
