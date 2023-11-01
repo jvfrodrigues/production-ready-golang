@@ -24,7 +24,5 @@ func GetCountryExchange(country string, transactionDate time.Time) (dtos.Exchang
 	if err != nil {
 		return data, err
 	}
-	fmt.Printf("%+v", requestUrl)
-	fmt.Printf("%+v", data)
 	return data, nil
 }
