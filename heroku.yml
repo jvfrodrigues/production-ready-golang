@@ -3,4 +3,5 @@ build:
     web: ./Dockerfile.prod
   config: ./docker-compose.prod.yaml
 
-web: bin/transaction-product-wex
+run:
+  web: bin/transaction-product-wex
