@@ -2,7 +2,6 @@ package usecases
 
 import (
 	"errors"
-	"fmt"
 	"math/big"
 	"strconv"
 
@@ -11,32 +10,19 @@ import (
 	"github.com/jvfrodrigues/transaction-product-wex/domain/entities"
 )
 
-type TransactionUseCase struct {
+type ExchangeTransactionUseCase struct {
 	TransactionRepository entities.TransactionRepository
 	ExchangeService       domain.ExchangeService
 }
 
-func NewTransactionUseCase(transactionRepository entities.TransactionRepository, exchangeService domain.ExchangeService) *TransactionUseCase {
-	return &TransactionUseCase{
+func NewExchangeTransactionUseCase(transactionRepository entities.TransactionRepository, exchangeService domain.ExchangeService) *ExchangeTransactionUseCase {
+	return &ExchangeTransactionUseCase{
 		TransactionRepository: transactionRepository,
 		ExchangeService:       exchangeService,
 	}
 }
 
-func (tx TransactionUseCase) Register(request dtos.TransactionInputDto) (*entities.Transaction, error) {
-	transaction, err := entities.NewTransaction(request.Description, request.TransactionDate, request.Amount)
-	if err != nil {
-		return nil, err
-	}
-	fmt.Printf("%+v", transaction)
-	err = tx.TransactionRepository.Register(transaction)
-	if err != nil {
-		return nil, err
-	}
-	return transaction, nil
-}
-
-func (tx TransactionUseCase) FindAndExchangeCurrency(id string, country string) (*dtos.TransactionExchangedOutputDto, error) {
+func (tx ExchangeTransactionUseCase) Execute(id string, country string) (*dtos.TransactionExchangedOutputDto, error) {
 	transaction, err := tx.TransactionRepository.Find(id)
 	if err != nil {
 		return nil, err
@@ -45,15 +31,11 @@ func (tx TransactionUseCase) FindAndExchangeCurrency(id string, country string) 
 	if err != nil {
 		return nil, err
 	}
-	treasuryExchange, ok := exchange.(dtos.TreasuryExchangeResponseDto)
-	if !ok {
-		return nil, errors.New("could not get exchange information")
-	}
-	if len(treasuryExchange.Data) <= 0 {
+	if len(exchange) <= 0 {
 		return nil, errors.New("no exchange information found for country in 6 month period")
 	}
 	originalAmount := new(big.Rat).SetFrac64(transaction.PurchaseAmount, 100)
-	parsedExchangeRate, err := strconv.ParseFloat(treasuryExchange.Data[0].ExchangeRate, 64)
+	parsedExchangeRate, err := strconv.ParseFloat(exchange[0].ExchangeRate, 64)
 	if err != nil {
 		return nil, err
 	}
@@ -63,7 +45,7 @@ func (tx TransactionUseCase) FindAndExchangeCurrency(id string, country string) 
 		ID:              transaction.ID,
 		Description:     transaction.Description,
 		TransactionDate: transaction.TransactionDate,
-		ExchangeRate:    treasuryExchange.Data[0].ExchangeRate,
+		ExchangeRate:    exchange[0].ExchangeRate,
 		OriginalAmount:  originalAmount.FloatString(2),
 		ConvertedAmount: convertedAmount.FloatString(2),
 	}

@@ -7,6 +7,7 @@ import (
 	"time"
 
 	"github.com/jvfrodrigues/transaction-product-wex/application/dtos"
+	"github.com/jvfrodrigues/transaction-product-wex/domain"
 	"github.com/jvfrodrigues/transaction-product-wex/infra/http"
 	"golang.org/x/text/cases"
 	"golang.org/x/text/language"
@@ -22,7 +23,7 @@ func NewTreasuryExchange() *TreasuryExchange {
 	}
 }
 
-func (te *TreasuryExchange) GetCountryExchange(country string, transactionDate time.Time) (interface{}, error) {
+func (te *TreasuryExchange) GetCountryExchange(country string, transactionDate time.Time) ([]domain.CountryExchange, error) {
 	var data dtos.TreasuryExchangeResponseDto
 	formattedLimitDate := transactionDate.AddDate(0, -6, 0).Format("2006-01-02")
 	formattedDate := transactionDate.Format("2006-01-02")
@@ -38,11 +39,20 @@ func (te *TreasuryExchange) GetCountryExchange(country string, transactionDate t
 	fmt.Println(requestUrl)
 	response, err := http.Get(requestUrl)
 	if err != nil {
-		return data, err
+		return nil, err
 	}
 	err = json.Unmarshal(response, &data)
 	if err != nil {
-		return data, err
+		return nil, err
 	}
-	return data, nil
+	var exchange []domain.CountryExchange
+	if len(data.Data) < 1 {
+		return exchange, nil
+	}
+	exchange = append(exchange, domain.CountryExchange{
+		Country:      data.Data[0].Country,
+		Currency:     data.Data[0].Currency,
+		ExchangeRate: data.Data[0].ExchangeRate,
+	})
+	return exchange, nil
 }
