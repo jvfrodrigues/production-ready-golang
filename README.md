@@ -85,14 +85,14 @@ All available routes are on the insomnia file in the repository.
 
 Here is a list of the routes:
 
-- Healtcheck on GET "/health"
+- Healtcheck on GET [/health](http://localhost:8080/health)
 
-- Create transaction on POST "/transaction" the body should be:
+- Create transaction on POST [/transaction](http://localhost:8080/transaction) the body should be:
 
   ```JSON
-  "description": string,
-  "transaction_date": ISO8601 string date,
-  "amount": number
+  "description": "string",
+  "transaction_date": "ISO8601 string date",
+  "amount": "number"
   ```
 
-- Find transaction and convert to currency on GET "/transaction/exchange/{id_to_find}?country={country_to_convert}
+- Find transaction and convert to currency on GET [/transaction/exchange/{id_to_find}?country={country_to_convert}](http://localhost:8080/transaction/exchange/{id_to_find}?country={country_to_convert})
