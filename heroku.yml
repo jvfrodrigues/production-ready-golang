@@ -1,8 +1,0 @@
-build:
-  docker:
-    web: ./Dockerfile.prod
-  config: 
-    web: ./docker-compose.prod.yaml
-
-run:
-  web: bin/transaction-product-wex
