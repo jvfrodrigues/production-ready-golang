@@ -2,11 +2,16 @@
 
 Project given by WEX as code challenge, a API that stores transaction and allows users to retrieve those transactions converting the value of the trasaction to the speciefied country's currency
 
+- [WEX](#wex-transaction-product-test)
+  - [Language](#language)
+  - [Used libraries](#used-libraries)
+  - [How to run](#how-to-run)
+
 ## Language
 
 This project is written in _Golang_ 1.21
 
-## Important libraries
+## Used libraries
 
 ### [Gin](https://github.com/gin-gonic/gin)
 
@@ -49,7 +54,7 @@ The project can run through Docker or locally first will need to
    cp .env.example .env
    ```
 
-- Using Docker
+### Using Docker
 
 4. Run docker compose
 
@@ -61,7 +66,7 @@ The project can run through Docker or locally first will need to
 
 6. If you want you can set the env variable in .env to "prd" so it will use postgres instead of sqlite
 
-- Locally
+### Locally
 
 4. Install all dependencies
    ```bash
