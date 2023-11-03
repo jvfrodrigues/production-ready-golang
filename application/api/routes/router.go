@@ -11,5 +11,6 @@ type Routes struct {
 }
 
 func (r *Routes) SetAllRoutes() {
+	r.setupHealthRoute()
 	r.setupTransactionRoutes()
 }
