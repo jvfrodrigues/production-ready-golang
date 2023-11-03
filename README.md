@@ -6,6 +6,7 @@ Project given by WEX as code challenge, a API that stores transaction and allows
   - [Language](#language)
   - [Used libraries](#used-libraries)
   - [How to run](#how-to-run)
+  - [Routes](#routes)
 
 ## Language
 
@@ -77,3 +78,21 @@ The project can run through Docker or locally first will need to
    go run main.go
    ```
 6. Test! It should run on [localhost:8080](http://localhost:8080)
+
+## Routes
+
+All available routes are on the insomnia file in the repository.
+
+Here is a list of the routes:
+
+- Healtcheck on GET "/health"
+
+- Create transaction on POST "/transaction" the body should be:
+
+  ```JSON
+  "description": string,
+  "transaction_date": ISO8601 string date,
+  "amount": number
+  ```
+
+- Find transaction and convert to currency on GET "/transaction/exchange/{id_to_find}?country={country_to_convert}
