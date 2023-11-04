@@ -1,4 +1,4 @@
-# WEX Transaction Product Test
+# WEX Transaction Product Test by Joao Rodrigues
 
 Project given by WEX as code challenge, a API that stores transaction and allows users to retrieve those transactions converting the value of the trasaction to the speciefied country's currency
 
@@ -17,10 +17,6 @@ This project is written in _Golang_ 1.21
 ### [Gin](https://github.com/gin-gonic/gin)
 
 Gin is our HTTP Server, it handles our routing system and HTTP requests
-
-### [Swaggo](https://github.com/swaggo/swag)
-
-Swag converts Go annotations to Swagger Documentation 2.0.
 
 ### [Gorm](https://github.com/go-gorm/gorm)
 
