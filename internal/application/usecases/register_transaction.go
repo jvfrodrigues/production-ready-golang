@@ -1,8 +1,8 @@
 package usecases
 
 import (
-	"github.com/jvfrodrigues/transaction-product-wex/application/dtos"
-	"github.com/jvfrodrigues/transaction-product-wex/domain/entities"
+	"github.com/jvfrodrigues/production-ready-golang/internal/application/dtos"
+	"github.com/jvfrodrigues/production-ready-golang/internal/domain/entities"
 )
 
 type RegisterTransactionUseCase struct {

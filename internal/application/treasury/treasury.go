@@ -6,9 +6,9 @@ import (
 	"net/url"
 	"time"
 
-	"github.com/jvfrodrigues/transaction-product-wex/application/dtos"
-	"github.com/jvfrodrigues/transaction-product-wex/domain"
-	"github.com/jvfrodrigues/transaction-product-wex/infra/http"
+	"github.com/jvfrodrigues/production-ready-golang/internal/application/dtos"
+	"github.com/jvfrodrigues/production-ready-golang/internal/domain"
+	"github.com/jvfrodrigues/production-ready-golang/internal/infra/http"
 	"golang.org/x/text/cases"
 	"golang.org/x/text/language"
 )

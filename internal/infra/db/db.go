@@ -8,7 +8,7 @@ import (
 
 	"github.com/jinzhu/gorm"
 	"github.com/joho/godotenv"
-	"github.com/jvfrodrigues/transaction-product-wex/domain/entities"
+	"github.com/jvfrodrigues/production-ready-golang/internal/domain/entities"
 	_ "github.com/lib/pq"
 	_ "gorm.io/driver/sqlite"
 )
@@ -19,7 +19,7 @@ func init() {
 
 	env := os.Getenv("env")
 	if env == "test" {
-		err := godotenv.Load(basepath + "/../../.env")
+		err := godotenv.Load(basepath + "/../../../.env")
 		if err != nil {
 			log.Fatalf("Error loading .env files")
 		}

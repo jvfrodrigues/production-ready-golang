@@ -5,9 +5,9 @@ import (
 	"math/big"
 	"strconv"
 
-	"github.com/jvfrodrigues/transaction-product-wex/application/dtos"
-	"github.com/jvfrodrigues/transaction-product-wex/domain"
-	"github.com/jvfrodrigues/transaction-product-wex/domain/entities"
+	"github.com/jvfrodrigues/production-ready-golang/internal/application/dtos"
+	"github.com/jvfrodrigues/production-ready-golang/internal/domain"
+	"github.com/jvfrodrigues/production-ready-golang/internal/domain/entities"
 )
 
 type ExchangeTransactionUseCase struct {

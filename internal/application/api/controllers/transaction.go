@@ -5,13 +5,13 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
-	"github.com/jvfrodrigues/transaction-product-wex/application/dtos"
-	"github.com/jvfrodrigues/transaction-product-wex/application/usecases"
-	"github.com/jvfrodrigues/transaction-product-wex/domain"
-	"github.com/jvfrodrigues/transaction-product-wex/domain/entities"
-	"github.com/jvfrodrigues/transaction-product-wex/infra/logger"
-	"github.com/jvfrodrigues/transaction-product-wex/infra/logger/zap"
-	"github.com/jvfrodrigues/transaction-product-wex/infra/validator"
+	"github.com/jvfrodrigues/production-ready-golang/internal/application/dtos"
+	"github.com/jvfrodrigues/production-ready-golang/internal/application/usecases"
+	"github.com/jvfrodrigues/production-ready-golang/internal/domain"
+	"github.com/jvfrodrigues/production-ready-golang/internal/domain/entities"
+	"github.com/jvfrodrigues/production-ready-golang/internal/infra/logger"
+	"github.com/jvfrodrigues/production-ready-golang/internal/infra/logger/zap"
+	"github.com/jvfrodrigues/production-ready-golang/internal/infra/validator"
 )
 
 type TransactionController struct {

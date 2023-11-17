@@ -2,7 +2,7 @@ package repository
 
 import (
 	"github.com/jinzhu/gorm"
-	"github.com/jvfrodrigues/transaction-product-wex/domain/entities"
+	"github.com/jvfrodrigues/production-ready-golang/internal/domain/entities"
 )
 
 type TransactionRepositoryDb struct {

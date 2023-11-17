@@ -11,11 +11,12 @@ import (
 	"time"
 
 	"github.com/gin-gonic/gin"
-	"github.com/jvfrodrigues/transaction-product-wex/application/api/controllers"
-	"github.com/jvfrodrigues/transaction-product-wex/application/dtos"
-	"github.com/jvfrodrigues/transaction-product-wex/domain"
-	"github.com/jvfrodrigues/transaction-product-wex/domain/entities"
-	"github.com/jvfrodrigues/transaction-product-wex/test/mocks"
+	"github.com/jvfrodrigues/production-ready-golang/internal/application/api/controllers"
+	"github.com/jvfrodrigues/production-ready-golang/internal/application/dtos"
+	"github.com/jvfrodrigues/production-ready-golang/internal/domain"
+	"github.com/jvfrodrigues/production-ready-golang/internal/domain/entities"
+	"github.com/jvfrodrigues/production-ready-golang/test/mocks"
+
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/mock"
 	"github.com/stretchr/testify/require"

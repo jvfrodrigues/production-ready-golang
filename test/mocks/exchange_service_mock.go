@@ -3,7 +3,7 @@ package mocks
 import (
 	"time"
 
-	"github.com/jvfrodrigues/transaction-product-wex/domain"
+	"github.com/jvfrodrigues/production-ready-golang/internal/domain"
 	"github.com/stretchr/testify/mock"
 )
 

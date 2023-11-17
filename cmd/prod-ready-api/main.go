@@ -3,9 +3,9 @@ package main
 import (
 	"os"
 
-	"github.com/jvfrodrigues/transaction-product-wex/application/api"
-	"github.com/jvfrodrigues/transaction-product-wex/infra/db"
-	"github.com/jvfrodrigues/transaction-product-wex/infra/logger/zap"
+	"github.com/jvfrodrigues/production-ready-golang/internal/application/api"
+	"github.com/jvfrodrigues/production-ready-golang/internal/infra/db"
+	"github.com/jvfrodrigues/production-ready-golang/internal/infra/logger/zap"
 )
 
 func main() {

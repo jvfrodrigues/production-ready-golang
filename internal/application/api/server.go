@@ -4,7 +4,7 @@ import (
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	"github.com/jinzhu/gorm"
-	"github.com/jvfrodrigues/transaction-product-wex/application/api/routes"
+	"github.com/jvfrodrigues/production-ready-golang/internal/application/api/routes"
 )
 
 type Server struct {

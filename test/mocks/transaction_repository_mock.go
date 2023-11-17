@@ -1,7 +1,7 @@
 package mocks
 
 import (
-	"github.com/jvfrodrigues/transaction-product-wex/domain/entities"
+	"github.com/jvfrodrigues/production-ready-golang/internal/domain/entities"
 	"github.com/stretchr/testify/mock"
 )
 

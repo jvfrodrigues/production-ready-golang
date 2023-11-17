@@ -1,4 +1,4 @@
-module github.com/jvfrodrigues/transaction-product-wex
+module github.com/jvfrodrigues/production-ready-golang
 
 go 1.21.3
 

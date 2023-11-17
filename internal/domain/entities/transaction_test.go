@@ -5,7 +5,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/jvfrodrigues/transaction-product-wex/domain/entities"
+	"github.com/jvfrodrigues/production-ready-golang/internal/domain/entities"
 	uuid "github.com/satori/go.uuid"
 
 	"github.com/stretchr/testify/assert"

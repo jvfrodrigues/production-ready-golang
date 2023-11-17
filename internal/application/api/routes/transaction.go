@@ -1,9 +1,9 @@
 package routes
 
 import (
-	"github.com/jvfrodrigues/transaction-product-wex/application/api/controllers"
-	"github.com/jvfrodrigues/transaction-product-wex/application/treasury"
-	"github.com/jvfrodrigues/transaction-product-wex/infra/repository"
+	"github.com/jvfrodrigues/production-ready-golang/internal/application/api/controllers"
+	"github.com/jvfrodrigues/production-ready-golang/internal/application/treasury"
+	"github.com/jvfrodrigues/production-ready-golang/internal/infra/repository"
 )
 
 func (r *Routes) setupTransactionRoutes() {
