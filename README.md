@@ -1,4 +1,4 @@
-# WEX Transaction Product Test by Joao Rodrigues
+# Production Ready Reference for Go
 
 Project given by WEX as code challenge, a API that stores transaction and allows users to retrieve those transactions converting the value of the trasaction to the speciefied country's currency
 
