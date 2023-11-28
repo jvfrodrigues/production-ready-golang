@@ -8,7 +8,7 @@ services:
     volumes:
       - .:/go/src/
     ports:
-      - "8080:8080"
+      - "8888:8888"
 
   db:
     image: postgres:9.4
@@ -23,3 +23,13 @@ services:
       - POSTGRES_DB=${DB_USER}
     ports:
       - "5432:5432"
+
+  cache:
+    image: redis:7.2
+    volumes:
+      - .redis-persistence:/var/lib/redis/data
+    env_file:
+      - .env
+    command: redis-server --requirepass ${CACHE_PASSWORD}
+    ports:
+      - "6379:6379"

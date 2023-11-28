@@ -31,3 +31,14 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
+
+  cache:
+    image: redis:7.2
+    volumes:
+      - .redis-persistence:/var/lib/redis/data
+    env_file:
+      - REDIS_DISABLE_COMMANDS=FLUSHDB,FLUSHALL,CONFIG
+      - .env
+    command: redis-server --requirepass ${CACHE_PASSWORD}
+    ports:
+      - "6379:6379"

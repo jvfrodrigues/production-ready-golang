@@ -20,7 +20,7 @@ func main() {
 func preparePort() string {
 	port, exists := os.LookupEnv("PORT")
 	if !exists {
-		port = "8080"
+		port = "8888"
 	}
 	serverPort := ":" + port
 	return serverPort

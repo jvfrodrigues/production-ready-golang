@@ -9,3 +9,6 @@ run: build
 
 test:
 	@go test -v ./...
+
+compose-local-up:
+	docker compose -f docker-compose.yaml up -d
